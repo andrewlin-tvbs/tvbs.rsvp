@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>TVBS 2026 品牌發表會</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500;700;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
 
   *, *::before, *::after {
     box-sizing: border-box;
@@ -16,10 +16,9 @@
   :root {
     --black: #000000;
     --white: #ffffff;
-    --dim: #888888;
-    --gold: #C8A96E;  /* 擷取自原版主視覺的金色 */
-    --blue: #1A6FFF;  /* 擷取自原版特效的科技藍 */
-    --bg-surface: #0f0f0f;
+    --dim: #aaaaaa;
+    --gold: #C8A96E;
+    --bg-surface: #0a0a0a;
   }
 
   body {
@@ -29,146 +28,139 @@
     max-width: 480px;
     margin: 0 auto;
     min-height: 100vh;
-    border-left: 1px solid rgba(255,255,255,0.05);
-    border-right: 1px solid rgba(255,255,255,0.05);
+    text-align: center; /* 全域置中對齊 */
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* 幾何主視覺區塊 */
-  .hero {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 9 / 14;
-    background: var(--bg-surface);
+  .container {
+    padding: 40px 24px 60px;
   }
-  .hero img {
+
+  /* 1. 主視覺 (縮小至約60%) */
+  .hero-section {
+    width: 60%;
+    margin: 0 auto 40px;
+  }
+  .hero-section img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 25%;
-    background: linear-gradient(to bottom, transparent, var(--black));
-    pointer-events: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   }
 
-  /* 內文區塊 */
-  .content {
-    padding: 0 28px 40px;
+  /* 2 & 3. What is Real 主題區塊 */
+  .theme-section {
+    margin-bottom: 50px;
   }
-
-  /* Logo與標題區塊 - 包浩斯幾何感 */
-  .header-section {
-    margin-top: 20px;
-    margin-bottom: 40px;
-  }
-  .brand-logo img {
-    width: 130px;
-    mix-blend-mode: screen;
-    margin-bottom: 24px;
-  }
-  .bauhaus-line {
-    width: 48px;
-    height: 6px;
-    background-color: var(--blue);
-    margin-bottom: 20px;
-  }
-  .event-title {
+  .theme-title {
     font-size: 32px;
     font-weight: 900;
+    color: var(--white);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .theme-subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--white);
     letter-spacing: 4px;
-    line-height: 1.2;
-    margin-bottom: 20px;
   }
-  .event-title span {
+
+  /* 4. Logo 與活動名稱區塊 */
+  .brand-section {
+    margin-bottom: 40px;
+  }
+  .tvbs-logo {
+    width: 120px;
+    margin: 0 auto 24px;
+    display: block;
+  }
+  .event-year {
+    font-size: 24px;
+    font-weight: 700;
     color: var(--gold);
+    letter-spacing: 6px;
+    margin-bottom: 4px;
   }
-  
-  /* 資訊 Meta 區 - 金色幾何引導線 */
-  .event-meta {
+  .event-name {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 8px;
+  }
+
+  /* 5. 時間地點資訊 */
+  .meta-section {
+    margin-bottom: 50px;
     font-size: 15px;
-    font-weight: 300;
     color: var(--dim);
     line-height: 1.8;
     letter-spacing: 1px;
-    border-left: 4px solid var(--gold);
-    padding-left: 16px;
   }
-  .event-meta strong {
-    color: var(--white);
-    font-weight: 700;
+  .meta-section p {
+    margin-bottom: 4px;
   }
 
-  /* 文案區塊 */
+  /* 6. 內文區塊 */
   .copy-section {
-    margin-top: 50px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.85);
+    line-height: 2.2;
+    letter-spacing: 1px;
   }
-  .copy-title {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 28px;
-    font-weight: 900;
-    color: var(--blue);
-    letter-spacing: 2px;
-    margin-bottom: 8px;
+
+  /* 7. 重點資訊 Highlight */
+  .highlight-section {
+    margin-bottom: 60px;
   }
-  .copy-subtitle {
+  .highlight-block {
+    margin-bottom: 24px;
+  }
+  .highlight-title {
     font-size: 18px;
     font-weight: 700;
     color: var(--gold);
-    letter-spacing: 4px;
-    margin-bottom: 24px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
   }
-  .copy-text {
+  .highlight-content {
     font-size: 15px;
-    line-height: 2.2;
-    font-weight: 300;
-    color: rgba(255,255,255,0.85);
-    margin-bottom: 24px;
-  }
-  .copy-highlight {
-    background-color: var(--bg-surface);
-    padding: 20px 16px;
-    border-left: 4px solid var(--blue);
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.8;
+    color: var(--white);
+    font-weight: 400;
     letter-spacing: 1px;
   }
-  .copy-highlight span {
-    color: var(--gold);
-    font-weight: 700;
-  }
 
-  /* 包浩斯風格表單 */
+  /* 8. RSVP 表單 */
   .form-section {
     background-color: var(--bg-surface);
-    padding: 36px 24px;
-    border-top: 6px solid var(--blue);
+    padding: 40px 24px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
   }
   .form-title {
-    font-size: 20px;
-    font-weight: 900;
+    font-size: 22px;
+    font-weight: 700;
     letter-spacing: 4px;
-    margin-bottom: 24px;
-    text-transform: uppercase;
+    margin-bottom: 30px;
+    color: var(--gold);
   }
   .form-group {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
   .form-group input {
     width: 100%;
     background: transparent;
     border: none;
-    border-bottom: 2px solid #333333;
+    border-bottom: 1px solid #555;
     padding: 12px 0;
     font-size: 16px;
     color: var(--white);
+    text-align: center; /* 輸入框文字也置中 */
     outline: none;
-    transition: all 0.3s ease;
+    transition: border-color 0.3s ease;
     border-radius: 0;
     -webkit-appearance: none;
   }
@@ -176,29 +168,28 @@
     border-bottom-color: var(--gold);
   }
   .form-group input::placeholder {
-    color: #555555;
-    font-weight: 300;
+    color: #666;
     letter-spacing: 2px;
   }
   .submit-btn {
     width: 100%;
-    background-color: var(--blue);
-    color: var(--white);
+    background-color: var(--gold);
+    color: var(--black);
     border: none;
-    padding: 18px;
+    padding: 16px;
     font-size: 16px;
     font-weight: 700;
     letter-spacing: 6px;
     cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    transition: opacity 0.3s ease;
   }
   .submit-btn:hover {
-    background-color: #0d52d6;
+    opacity: 0.8;
   }
   .submit-btn:disabled {
-    background-color: #333333;
-    color: #666666;
+    background-color: #555;
+    color: #222;
     cursor: not-allowed;
   }
 
@@ -207,18 +198,14 @@
     display: none;
     padding: 60px 24px;
     text-align: center;
-    background-color: var(--bg-surface);
-    border-top: 6px solid var(--gold);
   }
   .success-screen h2 {
     font-size: 28px;
-    font-weight: 900;
-    letter-spacing: 4px;
     color: var(--gold);
+    letter-spacing: 4px;
     margin-bottom: 16px;
   }
   .success-screen p {
-    font-weight: 300;
     color: var(--dim);
     line-height: 1.8;
   }
@@ -226,71 +213,78 @@
 </head>
 <body>
 
-  <section class="hero">
-    <img src="kv.jpg" alt="TVBS 2026 主視覺">
-  </section>
-
-  <div class="content">
+  <div class="container" id="main-content">
     
-    <header class="header-section">
-      <div class="brand-logo">
-        <img src="tvbs.png" alt="TVBS Logo">
+    <div class="hero-section">
+      <img src="kv.jpg" alt="TVBS 2026 主視覺">
+    </div>
+
+    <div class="theme-section">
+      <div class="theme-title">What is Real?</div>
+      <div class="theme-subtitle">真實展現 真正精彩 真摯邀請</div>
+    </div>
+
+    <div class="brand-section">
+      <img class="tvbs-logo" src="tvbs.png" alt="TVBS Logo">
+      <div class="event-year">2026</div>
+      <div class="event-name">品牌發表會</div>
+    </div>
+
+    <div class="meta-section">
+      <p>2026.04.15 13:00</p>
+      <p>松菸誠品表演廳 | 台北市信義區菸廠路88號B1</p>
+    </div>
+
+    <div class="copy-section">
+      當我們不再能真正辨別真假，<br>
+      100% 真實體驗就成為最高價商品，<br>
+      消費者為了真人表演、比賽 - 瘋狂、排隊、搶票，<br>
+      在每個現場跟著大家一起唱歌、尖叫、大笑，<br>
+      那些讓觀眾真正流淚、真心微笑的故事，<br>
+      還有讓我們看清未來的真相跟趨勢，<br>
+      這樣的未來，TVBS 準備好了，<br>
+      4/15 邀請您一起來真實感受。
+    </div>
+
+    <div class="highlight-section">
+      <div class="highlight-block">
+        <div class="highlight-title">真正巨星上場</div>
+        <div class="highlight-content">茱蒂蒙、陳昊森、曹佑寧、林美秀</div>
       </div>
-      <div class="bauhaus-line"></div>
-      <h1 class="event-title">2026<br><span>品牌發表會</span></h1>
-      
-      <div class="event-meta">
-        <p>2026.04.15 <strong>13:00</strong></p>
-        <p><strong>松菸誠品表演廳</strong> | 台北市信義區菸廠路88號B1</p>
+      <div class="highlight-block">
+        <div class="highlight-title">真的不能錯過</div>
+        <div class="highlight-content">2026 最想要演唱會門票，請攜帶名片抽獎</div>
       </div>
-    </header>
+    </div>
 
-    <section class="copy-section">
-      <div class="copy-title">What is Real?</div>
-      <div class="copy-subtitle">真實展現 真正精彩 真摯邀請</div>
-      <p class="copy-text">
-        當我們不再能真正辨別真假，<br>
-        100%真實體驗就成為最高價商品，<br>
-        消費者為了真人表演、比賽 - 瘋狂、排隊、搶票，<br>
-        在每個現場跟著大家一起唱歌、尖叫、大笑，<br>
-        那些讓觀眾真正流淚、真心微笑的故事，<br>
-        還有讓我們看清未來的真相跟趨勢，<br>
-        這樣的未來，TVBS準備好了，<br>
-        4/15 邀請您一起來真實感受。
-      </p>
-      <div class="copy-highlight">
-        <span>真正巨星上場</span> - 茱蒂蒙、陳昊森、曹佑寧、林美秀<br><br>
-        <span>真的不能錯過</span> - 2026最想要演唱會門票，請攜帶名片抽獎
+  </div>
+
+  <div class="form-section" id="form-container">
+    <div class="form-title">RSVP</div>
+    <form id="rsvp-form">
+      <div class="form-group">
+        <input type="text" id="name" placeholder="姓名" required>
       </div>
-    </section>
+      <div class="form-group">
+        <input type="text" id="company" placeholder="公司名稱" required>
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" placeholder="電子郵件" required>
+      </div>
+      <button type="submit" class="submit-btn" id="submit-btn">確認報名</button>
+    </form>
+  </div>
 
-    <section class="form-section" id="form-container">
-      <div class="form-title">RSVP</div>
-      <form id="rsvp-form">
-        <div class="form-group">
-          <input type="text" id="name" placeholder="姓名" required>
-        </div>
-        <div class="form-group">
-          <input type="text" id="company" placeholder="公司名稱" required>
-        </div>
-        <div class="form-group">
-          <input type="email" id="email" placeholder="電子郵件" required>
-        </div>
-        <button type="submit" class="submit-btn" id="submit-btn">確認報名</button>
-      </form>
-    </section>
-
-    <section class="success-screen" id="success-screen">
-      <h2>報名成功！</h2>
-      <p>感謝您的參與，活動詳情已發送至您的信箱。</p>
-    </section>
-
+  <div class="success-screen" id="success-screen">
+    <h2>報名成功！</h2>
+    <p>感謝您的參與，活動詳情已發送至您的信箱。</p>
   </div>
 
   <script>
     const form = document.getElementById('rsvp-form');
     const formContainer = document.getElementById('form-container');
     const successScreen = document.getElementById('success-screen');
+    const mainContent = document.getElementById('main-content');
     const btn = document.getElementById('submit-btn');
 
     form.addEventListener('submit', function(e) {
@@ -300,29 +294,4 @@
 
       const payload = {
         name: document.getElementById('name').value.trim(),
-        company: document.getElementById('company').value.trim(),
-        email: document.getElementById('email').value.trim()
-      };
-
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbyL-il1IoxAw94_9kZ0F_SrQu59mGouGAgw3od-Cana-SBeTzfQxV2ZajtHUVtNmA7K/exec';
-
-      fetch(scriptURL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(payload)
-      })
-      .then(response => {
-        formContainer.style.display = 'none';
-        successScreen.style.display = 'block';
-        successScreen.scrollIntoView({ behavior: 'smooth' });
-      })
-      .catch(error => {
-        alert('網路錯誤或伺服器無回應，請稍後再試。');
-        btn.disabled = false;
-        btn.innerText = '確認報名';
-      });
-    });
-  </script>
-
-</body>
-</html>
+        company: document.
