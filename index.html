@@ -26,24 +26,27 @@
     --gold: #C8A96E;
     --bg-surface: #0a0a0a;
     
-    /* 影片最高寬度設定為 720px，確保桌機有氣勢但不失控 */
-    --video-max-width: 720px;   
-    --content-max-width: 480px; 
+    --video-max-width: 720px;   /* 影片在桌機的最高寬度限制 */
+    --content-max-width: 480px; /* 文字內容最高寬度 */
   }
 
   body {
     font-family: 'Helvetica Neue', Arial, 'Noto Sans TC', sans-serif;
     background: var(--black);
     color: var(--white);
+    
+    /* 解放 body，讓影片能配合 max-width 成長 */
     max-width: var(--video-max-width); 
     margin: 0 auto;
     min-height: 100vh;
     text-align: center;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    /* 核心修改：防止影片貼齊螢幕時產生意外的水平捲軸 */
+    overflow-x: hidden; 
   }
 
-  /* 用來包覆「除影片外」所有內容的容器，鎖定在舒適的 480px */
+  /* 用來包覆「除影片外」所有內容的容器，鎖定在 480px */
   .content-block {
     max-width: var(--content-max-width);
     margin: 0 auto;
@@ -55,30 +58,40 @@
     width: 100%;
   }
 
-  /* 1. 主視覺 - 設定為 100% 滿版，不突破手機邊界 */
+  /* 1. 主視覺 - 核心優化：手機滿版貼齊邊緣，不超出螢幕 */
   .hero-section {
-    width: 100%; 
+    /* 核心修改：利用 vw 突破容器 padding，讓影片貼齊螢幕最左與最右邊緣 */
+    width: 100vw; 
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* 核心修改：在桌機上鎖定最高寬度 */
     max-width: var(--video-max-width); 
-    margin: 0 auto 50px; /* 完美置中 */
+    
+    margin-top: 0;
+    margin-bottom: 50px; /* 置中 */
   }
   
-  /* 疊加遮罩達成全方位淡出 */
+  /* 解放限制，氣勢震撼且全方位羽化 */
   .hero-section video, .hero-section img {
     width: 100%;
     height: auto;
     display: block;
     
-    /* 恢復自然的遮罩範圍，確保左右與底部都有漂亮的漸層融合 */
+    /* 核心優化遮罩：將中心實色黑色的範圍擴大 (40% -> 50%)，
+       確保影片中央的核心內容（如 T 標誌）清晰不被羽化影響 */
     -webkit-mask-image: 
       linear-gradient(to bottom, black 80%, transparent 100%),
-      radial-gradient(ellipse at center, black 40%, transparent 100%);
+      radial-gradient(ellipse at center, black 50%, transparent 100%);
     mask-image: 
       linear-gradient(to bottom, black 80%, transparent 100%),
-      radial-gradient(ellipse at center, black 40%, transparent 100%);
+      radial-gradient(ellipse at center, black 50%, transparent 100%);
       
     -webkit-mask-composite: source-in;
     mask-composite: intersect; 
     
+    /* 滿版時陰影微調，質感更好 */
     box-shadow: 0 10px 30px rgba(0,0,0,0.6); 
   }
 
