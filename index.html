@@ -97,6 +97,14 @@
     letter-spacing: 8px;
   }
 
+  /* 區塊專用金色分隔線 */
+  .divider {
+    width: 100px;
+    height: 0.5pt;
+    background-color: var(--gold);
+    margin: 0 auto 36px; /* 置中，並與下方文字保持適當呼吸空間 */
+  }
+
   /* 5. 時間地點資訊 */
   .meta-section {
     margin-bottom: 50px;
@@ -164,8 +172,8 @@
     color: var(--gold);
   }
   .form-disclaimer {
-    font-size: 15px; /* 放大為 15px */
-    color: var(--white); /* 顏色改為白色 */
+    font-size: 15px;
+    color: var(--white);
     line-height: 1.6;
     letter-spacing: 1px;
     margin-bottom: 24px;
@@ -285,7 +293,7 @@
     </div>
 
     <div class="meta-section">
-      <p style="color: var(--white); font-size: 24px; font-weight: 700; margin-bottom: 8px; letter-spacing: 2px;">2026.04.15</p>
+      <div class="divider"></div> <p style="color: var(--white); font-size: 24px; font-weight: 700; margin-bottom: 8px; letter-spacing: 2px;">2026.04.15</p>
       <p>13:00 報到入場</p>
       <p>13:30 活動開始</p>
       <p style="margin-bottom: 16px;">15:00 活動結束</p>
@@ -293,7 +301,7 @@
     </div>
 
     <div class="copy-section">
-      在AI主導的新未來，將真假難辨<br>
+      <div class="divider"></div> 在AI主導的新未來，將真假難辨<br>
       100% 真實體驗就成為最高價商品<br>
       消費者為了真人表演、比賽<br>
       <span class="text-150">瘋狂、排隊、搶票</span>
@@ -306,7 +314,7 @@
     </div>
 
     <div class="highlight-section">
-      <div class="highlight-block">
+      <div class="divider"></div> <div class="highlight-block">
         <div class="highlight-title">真正巨星上場</div>
         <div class="highlight-content">茱蒂蒙·瓊查容蘇因、陳昊森、曹佑寧、林美秀</div>
       </div>
@@ -319,7 +327,7 @@
   </div>
 
   <div class="form-section" id="form-container">
-    <div class="form-title">RSVP</div>
+    <div class="divider"></div> <div class="form-title">RSVP</div>
     <div class="form-disclaimer">
       本報名網頁僅供受邀對象使用。填寫報名表不代表確認出席，主辦單位保留最終審核權，並將於活動前另行通知。
     </div>
