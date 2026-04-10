@@ -26,27 +26,23 @@
     --gold: #C8A96E;
     --bg-surface: #0a0a0a;
     
-    --video-max-width: 720px;   /* 影片在桌機的最高寬度限制 */
-    --content-max-width: 480px; /* 文字內容最高寬度 */
+    --video-max-width: 720px;
+    --content-max-width: 480px;
   }
 
   body {
     font-family: 'Helvetica Neue', Arial, 'Noto Sans TC', sans-serif;
     background: var(--black);
     color: var(--white);
-    
-    /* 解放 body，讓影片能配合 max-width 成長 */
     max-width: var(--video-max-width); 
     margin: 0 auto;
     min-height: 100vh;
     text-align: center;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    /* 核心修改：防止影片貼齊螢幕時產生意外的水平捲軸 */
     overflow-x: hidden; 
   }
 
-  /* 用來包覆「除影片外」所有內容的容器，鎖定在 480px */
   .content-block {
     max-width: var(--content-max-width);
     margin: 0 auto;
@@ -58,44 +54,31 @@
     width: 100%;
   }
 
-  /* 1. 主視覺 - 核心優化：手機滿版貼齊邊緣，不超出螢幕 */
   .hero-section {
-    /* 核心修改：利用 vw 突破容器 padding，讓影片貼齊螢幕最左與最右邊緣 */
     width: 100vw; 
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    
-    /* 核心修改：在桌機上鎖定最高寬度 */
     max-width: var(--video-max-width); 
-    
     margin-top: 0;
-    margin-bottom: 50px; /* 置中 */
+    margin-bottom: 50px;
   }
   
-  /* 解放限制，氣勢震撼且全方位羽化 */
   .hero-section video, .hero-section img {
     width: 100%;
     height: auto;
     display: block;
-    
-    /* 核心優化遮罩：將中心實色黑色的範圍擴大 (40% -> 50%)，
-       確保影片中央的核心內容（如 T 標誌）清晰不被羽化影響 */
     -webkit-mask-image: 
       linear-gradient(to bottom, black 80%, transparent 100%),
       radial-gradient(ellipse at center, black 50%, transparent 100%);
     mask-image: 
       linear-gradient(to bottom, black 80%, transparent 100%),
       radial-gradient(ellipse at center, black 50%, transparent 100%);
-      
     -webkit-mask-composite: source-in;
     mask-composite: intersect; 
-    
-    /* 滿版時陰影微調，質感更好 */
     box-shadow: 0 10px 30px rgba(0,0,0,0.6); 
   }
 
-  /* 2 & 3. What is Real 主題區塊 */
   .theme-section {
     margin-bottom: 50px;
   }
@@ -114,7 +97,6 @@
     line-height: 1.4;
   }
 
-  /* 4. Logo 與活動名稱區塊 */
   .brand-section {
     margin-bottom: 40px;
   }
@@ -137,7 +119,6 @@
     letter-spacing: 8px;
   }
 
-  /* 區塊專用金色分隔線 */
   .divider {
     width: 50px;
     height: 0.5pt;
@@ -145,7 +126,6 @@
     margin: 0 auto 36px;
   }
 
-  /* 5. 時間地點資訊 */
   .meta-section {
     margin-bottom: 50px;
     font-size: 15px;
@@ -157,7 +137,6 @@
     margin-bottom: 4px;
   }
 
-  /* 6. 內文區塊 */
   .copy-section {
     margin-bottom: 50px;
     font-size: 16px;
@@ -176,7 +155,6 @@
     margin: 4px 0 16px;
   }
 
-  /* 7. 重點資訊 Highlight */
   .highlight-section {
     margin-bottom: 60px;
   }
@@ -197,8 +175,9 @@
     letter-spacing: 1px;
   }
 
-  /* 8. RSVP 表單 */
+  /* 8. RSVP 表單 - 此區塊已隱藏 */
   .form-section {
+    display: none !important; /* <--- 隱藏 RSVP 的關鍵 */
     background-color: var(--bg-surface);
     padding: 40px 24px;
     border-top: 1px solid #333;
@@ -393,22 +372,6 @@
         </div>
         <button type="submit" class="submit-btn" id="submit-btn">確認報名</button>
       </form>
-    </div>
-  </div>
-
-  <div class="success-screen" id="success-screen">
-    <div class="content-block">
-      <h2>完成報名！</h2>
-      <p>本次活動採邀請制，填寫報名表不代表確認出席資格。主辦單位將於活動前2天另行以電子郵件通知完成報名的貴賓，請留意信箱來信。</p>
-      
-      <img src="kv.jpg" alt="TVBS 2026 主視覺" class="success-img">
-      
-      <div class="recap-meta">
-        <p style="color: var(--gold); font-size: 20px; font-weight: 700; margin-bottom: 8px; letter-spacing: 2px;">2026.04.15</p>
-        <p>松菸誠品表演廳 | 台北市信義區菸廠路88號B1</p>
-      </div>
-
-      <button class="submit-btn back-btn" id="back-home-btn">回到首頁</button>
     </div>
   </div>
 
